@@ -1,3 +1,4 @@
+import 'package:allergyapp/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -8,7 +9,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextFieldController = TextEditingController();
+  final textFieldNameController = TextEditingController();
+  final textFieldAgeController = TextEditingController();
+  final textFieldSeasonController = TextEditingController();
+  final textFieldLocationController = TextEditingController();
+  final textFieldAsthmaController = TextEditingController();
+  final textFieldSmokingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,16 +24,10 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             Row(
-              children: [
-                //Back button
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.arrow_back_outlined,
-                      size: 24,
-                    )),
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
                 //Title Text
-                const Text(
+                Text(
                   'Your Information',
                   style: TextStyle(fontSize: 24),
                 ),
@@ -38,9 +39,12 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.84,
               child: TextField(
-                controller: TextFieldController,
+                //change Textfield Color
+
+                controller: textFieldNameController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
+                  focusColor: Color.fromARGB(255, 63, 214, 199),
                   labelText: 'Name',
                 ),
                 onChanged: null,
@@ -51,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.84,
               child: TextField(
-                controller: TextFieldController,
+                controller: textFieldAgeController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Age',
@@ -59,25 +63,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: null,
               ),
             ),
+
             //height spacing
             const SizedBox(height: 30),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.84,
               child: TextField(
-                controller: TextFieldController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Name',
-                ),
-                onChanged: null,
-              ),
-            ),
-            //height spacing
-            const SizedBox(height: 30),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.84,
-              child: TextField(
-                controller: TextFieldController,
+                controller: textFieldSeasonController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Season and Months',
@@ -90,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.84,
               child: TextField(
-                controller: TextFieldController,
+                controller: textFieldLocationController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Location',
@@ -102,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.84,
               child: TextField(
-                controller: TextFieldController,
+                controller: textFieldAsthmaController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Asthma',
@@ -114,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.84,
               child: TextField(
-                controller: TextFieldController,
+                controller: textFieldSmokingController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Smoking',
@@ -125,7 +117,20 @@ class _LoginScreenState extends State<LoginScreen> {
             //height
             const SizedBox(height: 20),
             //Next button
-            TextButton(onPressed: () {}, child: const Text('Save'))
+            TextButton(
+                onPressed: () {
+                  //Go to home screen
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
+                },
+                child: const Text(
+                  'Save',
+                  style: TextStyle(
+                      fontSize: 24, color: Color.fromARGB(255, 63, 214, 199)),
+                ))
           ],
         ),
       )),
